@@ -376,10 +376,11 @@ function cargarVoces() {
       sel.appendChild(opt);
     });
     
-// Seleccionar una voz por defecto (preferiblemente español de Argentina o España)
-const defaultVoice = voces.findIndex(v => v.lang === 'es-AR' || v.lang === 'es-ES');
-if (defaultVoice >= 0) sel.value = defaultVoice;
-    
+    // Seleccionar una voz por defecto (preferiblemente español de Argentina o España)
+    const defaultVoice = voces.findIndex(v => v.lang === 'es-AR' || v.lang === 'es-ES');
+    if (defaultVoice >= 0) sel.value = defaultVoice;
+  };
+  
   intentarCargar();
 }
 if (synth.onvoiceschanged !== undefined) synth.onvoiceschanged = cargarVoces;
