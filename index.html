@@ -376,19 +376,9 @@ function cargarVoces() {
       sel.appendChild(opt);
     });
     
-// Prioridad: voz masculina en español → cualquier español → primera disponible
-const vozMasculina = voces.findIndex(v =>
-  v.lang && v.lang.startsWith('es') &&
-  (v.name.toLowerCase().includes('diego') ||
-   v.name.toLowerCase().includes('jorge') ||
-   v.name.toLowerCase().includes('pablo') ||
-   v.name.toLowerCase().includes('carlos') ||
-   v.name.toLowerCase().includes('male') ||
-   v.name.toLowerCase().includes('masculin'))
-);
-const vozES = voces.findIndex(v => v.lang === 'es-AR' || v.lang === 'es-ES');
-const vozDefault = vozMasculina >= 0 ? vozMasculina : (vozES >= 0 ? vozES : 0);
-sel.value = vozDefault;
+// Seleccionar una voz por defecto (preferiblemente español de Argentina o España)
+const defaultVoice = voces.findIndex(v => v.lang === 'es-AR' || v.lang === 'es-ES');
+if (defaultVoice >= 0) sel.value = defaultVoice;
     
   intentarCargar();
 }
